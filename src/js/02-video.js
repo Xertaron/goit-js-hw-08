@@ -15,15 +15,15 @@ const currentLength = function (length) {
   localStorage.setItem(time, JSON.stringify(seconds));
 };
 
-video.on('timeupdate', throttle(getCurrentTime, 500));
+video.on('timeupdate', throttle(currentLength, 1000));
 
 video.setCurrentTime(JSON.parse(localStorage.getItem(time)) || 0);
 
 video
   .setColor('#d8e0ff')
   .then(function (color) {
-    console.log('The new color value: #D8E0FF');
+    console.log('Color has been set');
   })
   .catch(function (error) {
-    console.log('An error occured while setting the color');
+    console.log('Could not set the color');
   });
