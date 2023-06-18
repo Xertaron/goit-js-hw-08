@@ -1,0 +1,3 @@
+[submodule "path_to_submodule"] 
+  path = goit-js-hw-08 
+  url = https://github.com/goitacademy/parcel-project-template
