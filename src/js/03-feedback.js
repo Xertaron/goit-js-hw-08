@@ -4,12 +4,20 @@ const key = 'feedback-form-state';
 
 form = document.querySelector('.feedback-form');
 
-form.addEventListener('submit', formInput);
-form.addEventListener('input', throttle(onInputData, 500));
+function formInput(event) {
+  event.preventDefault();
+  console.log({ email: email.value, message: message.value });
 
-let formData = JSON.parse(localStorage.getItem(key)) || {};
-const { email, message } = form.elements;
-reloadPage();
+  if (email.value === '' || message.value === '') {
+    return alert('Please fill required fields');
+  }
+
+  localStorage.removeItem(key);
+  event.currentTarget.reset();
+  formData = {};
+}
+
+form.addEventListener('submit', formInput);
 
 function onInputData(event) {
   formData = { email: email.value, message: message.value };
@@ -23,15 +31,8 @@ function reloadPage() {
   }
 }
 
-function formInput(event) {
-  event.preventDefault();
-  console.log({ email: email.value, message: message.value });
+let formData = JSON.parse(localStorage.getItem(key)) || {};
+const { email, message } = form.elements;
+reloadPage();
 
-  if (email.value === '' || message.value === '') {
-    return alert('Please fill required fields');
-  }
-
-  localStorage.removeItem(key);
-  event.currentTarget.reset();
-  formData = {};
-}
+form.addEventListener('input', throttle(onInputData, 500));
