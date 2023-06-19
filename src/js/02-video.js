@@ -3,9 +3,9 @@ import throttle from 'lodash.throttle';
 
 const iframe = document.querySelector('iframe');
 const video = new Player(iframe, {
-  loop: true,
-  fullscreen: true,
   quality: '1080p',
+  fullscreen: true,
+  loop: true,
 });
 
 const time = 'videoplayer-current-time';

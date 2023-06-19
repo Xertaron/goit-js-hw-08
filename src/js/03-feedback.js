@@ -9,7 +9,7 @@ function formInput(event) {
   console.log({ email: email.value, message: message.value });
 
   if (email.value === '' || message.value === '') {
-    return alert('Please fill required fields');
+    return alert('Fields cannot be empty');
   }
 
   localStorage.removeItem(key);
