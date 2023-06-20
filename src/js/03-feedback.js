@@ -2,14 +2,14 @@ import throttle from 'lodash.throttle';
 
 const key = 'feedback-form-state';
 
-form = document.querySelector('.feedback-form');
+const form = document.querySelector('.feedback-form');
 
 function formInput(event) {
   event.preventDefault();
   console.log({ email: email.value, message: message.value });
 
   if (email.value === '' || message.value === '') {
-    return alert('Fields cannot be empty');
+    return alert('Text fields cannot be empty!');
   }
 
   localStorage.removeItem(key);
